@@ -1,59 +1,76 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Wrench } from "lucide-react";
+import { Menu, X, Phone, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
     { path: "/services", label: "Services" },
-    { path: "/faq", label: "FAQ" },
+    { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border/50">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled ? "glass py-3" : "bg-transparent py-5"
+    }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center shadow-soft group-hover:shadow-hover transition-all duration-300">
-              <Wrench className="w-5 h-5 text-primary-foreground" />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-all duration-300">
+                <Zap className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-30 blur-lg transition-opacity duration-300" />
             </div>
-            <span className="font-bold text-xl text-foreground">
-              Appliances<span className="text-primary">Help</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="font-bold text-xl text-foreground tracking-tight">
+                Appliances<span className="gradient-text">Help</span>
+              </span>
+              <span className="text-[10px] text-muted-foreground uppercase tracking-widest">Expert Repairs</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${
+                className={`relative px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
                   isActive(link.path)
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
+                {isActive(link.path) && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
+                )}
               </Link>
             ))}
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a href="tel:+919876543210">
-              <Button variant="hero" size="default" className="gap-2">
+              <Button variant="hero" size="default">
                 <Phone className="w-4 h-4" />
-                Call Now
+                <span>Get Help Now</span>
               </Button>
             </a>
           </div>
@@ -61,17 +78,17 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-muted transition-colors"
+            className="lg:hidden p-2.5 rounded-xl glass hover:bg-muted/50 transition-colors"
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <nav className="md:hidden py-4 border-t border-border/50 animate-slide-in-up">
-            <div className="flex flex-col gap-2">
+          <nav className="lg:hidden mt-4 p-4 rounded-2xl glass animate-scale-in">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -80,16 +97,16 @@ const Header = () => {
                   className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                     isActive(link.path)
                       ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                   }`}
                 >
                   {link.label}
                 </Link>
               ))}
-              <a href="tel:+919876543210" className="mt-2">
-                <Button variant="hero" className="w-full gap-2">
+              <a href="tel:+919876543210" className="mt-3">
+                <Button variant="hero" className="w-full">
                   <Phone className="w-4 h-4" />
-                  Call Now
+                  Get Help Now
                 </Button>
               </a>
             </div>

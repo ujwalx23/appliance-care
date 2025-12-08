@@ -1,53 +1,71 @@
-import { Shield, Clock, IndianRupee, Award } from "lucide-react";
+import { Shield, Clock, IndianRupee, Wrench, Star, Users } from "lucide-react";
 
-const trustPoints = [
+const features = [
   {
-    icon: Award,
-    title: "Expert Technicians",
-    description: "Certified professionals with years of experience in appliance repair.",
+    icon: Wrench,
+    title: "Certified Technicians",
+    description: "Factory-trained experts with years of hands-on experience.",
   },
   {
     icon: Clock,
-    title: "Fast Service",
-    description: "Same-day service available. We value your time and convenience.",
+    title: "Rapid Response",
+    description: "Same-day service in most areas. We value your time.",
   },
   {
     icon: IndianRupee,
-    title: "Transparent Pricing",
-    description: "No hidden charges. Get upfront quotes before any work begins.",
+    title: "Upfront Pricing",
+    description: "No hidden fees. Get a quote before any work begins.",
   },
   {
     icon: Shield,
-    title: "All Brands Supported",
-    description: "We repair all Indian and imported brands with genuine parts.",
+    title: "Warranty Included",
+    description: "All repairs backed by our 90-day service warranty.",
+  },
+  {
+    icon: Star,
+    title: "All Brands",
+    description: "We service Indian and imported brands with genuine parts.",
+  },
+  {
+    icon: Users,
+    title: "10K+ Customers",
+    description: "Trusted by thousands of homes across India.",
   },
 ];
 
 const TrustSection = () => {
   return (
-    <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Homes Trust Us
+    <section className="py-24 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/30 to-transparent" />
+      
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-primary uppercase tracking-widest mb-3">Why Choose Us</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">
+            Built on <span className="gradient-text">Trust</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            We've built our reputation on reliability, quality, and customer satisfaction.
+          <p className="text-muted-foreground max-w-xl mx-auto">
+            We've earned the trust of thousands of Indian homes through quality service and genuine care.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trustPoints.map((point, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
             <div
-              key={point.title}
-              className="text-center p-6 rounded-2xl bg-card border border-border/50 hover:shadow-card transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              key={feature.title}
+              className="group p-6 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 hover:border-primary/30 transition-all duration-500 animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <point.icon className="w-8 h-8 text-primary" />
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center shrink-0 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all duration-300">
+                  <feature.icon className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground mb-1">{feature.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">{point.title}</h3>
-              <p className="text-muted-foreground text-sm">{point.description}</p>
             </div>
           ))}
         </div>

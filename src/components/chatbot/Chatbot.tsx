@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, X, Send, Wrench } from "lucide-react";
+import { MessageCircle, X, Send, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Message {
@@ -9,20 +9,20 @@ interface Message {
 }
 
 const quickReplies = [
-  "Washing Machine Repair",
-  "AC Not Cooling",
-  "Fridge Not Working",
-  "Book a Service",
+  "Washing Machine",
+  "AC Repair",
+  "Fridge Issue",
+  "Book Service",
   "Get Quote",
 ];
 
 const responses: Record<string, string> = {
-  "washing machine repair": "🧺 We specialize in washing machine repairs! Common issues we fix include:\n\n• Not spinning or draining\n• Leaking water\n• Strange noises\n• Not starting\n\nWould you like to book a technician? Call us at +91-9876543210!",
-  "ac not cooling": "❄️ AC not cooling? This could be due to:\n\n• Low refrigerant\n• Dirty filters\n• Compressor issues\n• Thermostat problems\n\nOur experts can diagnose and fix it quickly. Call +91-9876543210!",
-  "fridge not working": "🧊 Refrigerator troubles? We handle:\n\n• Not cooling properly\n• Making loud noises\n• Ice buildup\n• Door seal issues\n\nBook a visit today! Call +91-9876543210",
-  "book a service": "📅 Ready to book? Here's how:\n\n1. Call us: +91-9876543210\n2. Or visit our Contact page\n3. Fill the service request form\n\nWe offer same-day service!",
-  "get quote": "💰 For a free quote, please share:\n\n• Appliance type\n• Brand & model\n• Issue description\n\nCall +91-9876543210 or fill our contact form for instant pricing!",
-  "default": "👋 Hi there! I'm here to help with your appliance questions.\n\nI can assist with:\n• Washing machines\n• Refrigerators\n• Air conditioners\n• Microwaves\n• Dryers\n\nWhat appliance needs help today?",
+  "washing machine": "🧺 Washing Machine Issues:\n\n• Not spinning or draining\n• Leaking water\n• Unusual noises\n• Won't start\n\nCall +91-9876543210 for quick service!",
+  "ac": "❄️ AC Problems:\n\n• Not cooling\n• Strange noises\n• Gas leakage\n• Compressor issues\n\nBook a technician: +91-9876543210",
+  "fridge": "🧊 Refrigerator Fixes:\n\n• Not cooling properly\n• Ice buildup\n• Unusual sounds\n• Door seal issues\n\nCall us: +91-9876543210",
+  "book": "📅 Book a Service:\n\n1. Call: +91-9876543210\n2. Visit our Contact page\n3. Fill the online form\n\nSame-day service available!",
+  "quote": "💰 Free Quote:\n\nShare your appliance type, brand, and issue description.\n\nCall +91-9876543210 or use our contact form!",
+  "default": "👋 Hi! I can help with:\n\n• Washing Machines\n• Refrigerators\n• Air Conditioners\n• Microwaves\n• Dryers\n\nWhat needs fixing?",
 };
 
 const Chatbot = () => {
@@ -35,43 +35,23 @@ const Chatbot = () => {
   const handleSend = (text: string) => {
     if (!text.trim()) return;
 
-    const userMessage: Message = {
-      id: Date.now(),
-      text: text,
-      isBot: false,
-    };
-
+    const userMessage: Message = { id: Date.now(), text, isBot: false };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
 
-    // Find matching response
     const lowerText = text.toLowerCase();
     let botResponse = responses.default;
 
     for (const [key, value] of Object.entries(responses)) {
-      if (lowerText.includes(key) || key.includes(lowerText)) {
+      if (lowerText.includes(key)) {
         botResponse = value;
         break;
       }
     }
 
-    // Electronics general help
-    if (lowerText.includes("tip") || lowerText.includes("advice") || lowerText.includes("help")) {
-      botResponse = "💡 Quick Electronics Tips:\n\n• Always unplug before cleaning\n• Regular maintenance extends life\n• Don't overload your appliances\n• Clean filters monthly\n• Check power connections first\n\nNeed specific help? Just ask!";
-    }
-
     setTimeout(() => {
-      const botMessage: Message = {
-        id: Date.now() + 1,
-        text: botResponse,
-        isBot: true,
-      };
-      setMessages((prev) => [...prev, botMessage]);
-    }, 500);
-  };
-
-  const handleQuickReply = (reply: string) => {
-    handleSend(reply);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, text: botResponse, isBot: true }]);
+    }, 400);
   };
 
   return (
@@ -79,8 +59,10 @@ const Chatbot = () => {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl shadow-hover flex items-center justify-center transition-all duration-300 ${
-          isOpen ? "bg-foreground text-background rotate-0" : "bg-primary text-primary-foreground animate-bounce-gentle"
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-xl ${
+          isOpen
+            ? "bg-muted text-foreground rotate-0"
+            : "bg-gradient-to-br from-primary to-secondary text-primary-foreground animate-pulse-glow"
         }`}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
@@ -89,30 +71,27 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[90vw] max-w-[380px] bg-card rounded-3xl shadow-card border border-border overflow-hidden animate-scale-in">
+        <div className="fixed bottom-24 right-6 z-50 w-[calc(100vw-3rem)] max-w-[380px] glass-card rounded-3xl overflow-hidden animate-scale-in shadow-2xl">
           {/* Header */}
-          <div className="bg-primary p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center">
-              <Wrench className="w-5 h-5 text-primary-foreground" />
+          <div className="bg-gradient-to-r from-primary to-secondary p-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
+              <Zap className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h3 className="font-semibold text-primary-foreground">AppliancesHelp</h3>
-              <p className="text-xs text-primary-foreground/80">Online • Ready to help</p>
+              <h3 className="font-semibold text-white">AppliancesHelp</h3>
+              <p className="text-xs text-white/80">Online • Ready to help</p>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="h-80 overflow-y-auto p-4 space-y-4">
+          <div className="h-72 overflow-y-auto p-4 space-y-3 bg-background/50">
             {messages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}
-              >
+              <div key={msg.id} className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}>
                 <div
                   className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm whitespace-pre-line ${
                     msg.isBot
                       ? "bg-muted text-foreground rounded-bl-md"
-                      : "bg-primary text-primary-foreground rounded-br-md"
+                      : "bg-gradient-to-r from-primary to-secondary text-white rounded-br-md"
                   }`}
                 >
                   {msg.text}
@@ -122,12 +101,12 @@ const Chatbot = () => {
           </div>
 
           {/* Quick Replies */}
-          <div className="px-4 pb-2 flex gap-2 overflow-x-auto">
+          <div className="px-4 pb-2 flex gap-2 overflow-x-auto bg-background/50">
             {quickReplies.map((reply) => (
               <button
                 key={reply}
-                onClick={() => handleQuickReply(reply)}
-                className="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium whitespace-nowrap hover:bg-primary/20 transition-colors"
+                onClick={() => handleSend(reply)}
+                className="px-3 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-medium whitespace-nowrap hover:bg-primary/20 transition-colors border border-primary/20"
               >
                 {reply}
               </button>
@@ -135,7 +114,7 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-border">
+          <div className="p-4 border-t border-border/50 bg-card/50">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -148,9 +127,9 @@ const Chatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-2.5 rounded-xl bg-muted border-0 text-sm focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="flex-1 px-4 py-2.5 rounded-xl bg-muted border-0 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
-              <Button type="submit" size="icon" className="rounded-xl shrink-0">
+              <Button type="submit" size="icon" variant="hero" className="rounded-xl shrink-0">
                 <Send className="w-4 h-4" />
               </Button>
             </form>
