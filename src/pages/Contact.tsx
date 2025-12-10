@@ -191,30 +191,39 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="machineType">Machine Type <span className="text-destructive">*</span></Label>
-                  <Select value={machineType} onValueChange={setMachineType} required>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Select machine type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Top Load">Top Load</SelectItem>
-                      <SelectItem value="Front Load">Front Load</SelectItem>
-                      <SelectItem value="Semi Automatic">Semi Automatic</SelectItem>
-                      <SelectItem value="Fully Automatic">Fully Automatic</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+  <Label htmlFor="machineType">
+    Machine Type <span className="text-destructive">*</span>
+  </Label>
+  <Select value={machineType} onValueChange={setMachineType} required>
+    <SelectTrigger className="h-12">
+      <SelectValue placeholder="Select machine type" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="Top Load">Top Load</SelectItem>
+      <SelectItem value="Front Load">Front Load</SelectItem>
+      <SelectItem value="Semi Automatic">Semi Automatic</SelectItem>
+      <SelectItem value="Fully Automatic">Fully Automatic</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="issue">Issue Description <span className="text-destructive">*</span></Label>
-                  <Textarea
-                    id="issue"
-                    name="issue"
-                    placeholder="Describe the issue with your washing machine..."
-                    required
-                    className="min-h-[120px] resize-none"
-                  />
-                </div>
+<div className="space-y-2">
+  <Label htmlFor="issueType">
+    Issue Type <span className="text-destructive">*</span>
+  </Label>
+  <Select value={issueType} onValueChange={setIssueType} required>
+    <SelectTrigger className="h-12">
+      <SelectValue placeholder="Select an issue type" />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectItem value="Installation & Uninstallation">Installation & Uninstallation</SelectItem>
+      <SelectItem value="Removal">Removal</SelectItem>
+      <SelectItem value="Repair">Repair</SelectItem>
+      <SelectItem value="Service">Service</SelectItem>
+      <SelectItem value="Other">Other (Please mention)</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
 
                 <Button 
                   type="submit" 
