@@ -1,8 +1,61 @@
 import Layout from "@/components/layout/Layout";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Clock, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [machineType, setMachineType] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("machineType", machineType);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mrbnykwv", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        (e.target as HTMLFormElement).reset();
+        setMachineType("");
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <Layout>
       {/* Hero */}
@@ -85,23 +138,100 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Google Form Embed */}
+            {/* Contact Form */}
             <div>
-              <h2 className="text-2xl font-bold text-foreground mb-6">Book a Service</h2>
-              <div className="bg-background rounded-xl border border-border overflow-hidden">
-                <iframe
-                  src="https://docs.google.com/forms/d/e/1FAIpQLSdDEBWpzYbqLGHj8pW8bxmxK6JWEC7Y7c-3ej5j8A9qQvR8tw/viewform?embedded=true"
-                  width="100%"
-                  height="600"
-                  frameBorder="0"
-                  marginHeight={0}
-                  marginWidth={0}
-                  className="w-full"
-                  title="Service Request Form"
+              <h2 className="text-2xl font-bold text-foreground mb-6">Send Us a Message</h2>
+              <form onSubmit={handleSubmit} className="bg-background rounded-xl border border-border p-6 space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name <span className="text-destructive">*</span></Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your full name"
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email <span className="text-destructive">*</span></Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number <span className="text-destructive">*</span></Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="locality">Locality of Service <span className="text-destructive">*</span></Label>
+                  <Input
+                    id="locality"
+                    name="locality"
+                    type="text"
+                    placeholder="Your area/locality"
+                    required
+                    className="h-12"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="machineType">Machine Type <span className="text-destructive">*</span></Label>
+                  <Select value={machineType} onValueChange={setMachineType} required>
+                    <SelectTrigger className="h-12">
+                      <SelectValue placeholder="Select machine type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Top Load">Top Load</SelectItem>
+                      <SelectItem value="Front Load">Front Load</SelectItem>
+                      <SelectItem value="Semi Automatic">Semi Automatic</SelectItem>
+                      <SelectItem value="Fully Automatic">Fully Automatic</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="issue">Issue Description <span className="text-destructive">*</span></Label>
+                  <Textarea
+                    id="issue"
+                    name="issue"
+                    placeholder="Describe the issue with your washing machine..."
+                    required
+                    className="min-h-[120px] resize-none"
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  size="lg" 
+                  className="w-full gap-2 h-12"
+                  disabled={isSubmitting || !machineType}
                 >
-                  Loading form...
-                </iframe>
-              </div>
+                  {isSubmitting ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      SEND MESSAGE
+                    </>
+                  )}
+                </Button>
+              </form>
             </div>
           </div>
         </div>
