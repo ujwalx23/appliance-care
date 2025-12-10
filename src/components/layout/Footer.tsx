@@ -1,54 +1,66 @@
 import { Link } from "react-router-dom";
-import { Zap, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-border/50">
-      {/* Glow effect */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-muted border-t border-border">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="lg:col-span-2 space-y-6">
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <Zap className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-xl text-foreground">
-                Appliances<span className="gradient-text">Help</span>
+          <div className="space-y-4">
+            <Link to="/" className="inline-block">
+              <span className="text-xl font-bold text-foreground">
+                Washing<span className="text-primary">Expert</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-sm">
-              India's most trusted appliance repair service. We bring your home back to life with expert technicians and guaranteed satisfaction.
+            <p className="text-sm text-muted-foreground">
+              Professional washing machine repair and service. Expert technicians available 8 AM – 10 PM.
             </p>
-            <div className="flex items-center gap-4 text-sm">
-              <div className="flex items-center gap-2 text-primary">
-                <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span>Available 24/7</span>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-foreground mb-5">Navigation</h3>
-            <ul className="space-y-3">
+            <h3 className="font-semibold text-foreground mb-4">Quick Links</h3>
+            <ul className="space-y-2">
               {[
                 { label: "Home", path: "/" },
+                { label: "About", path: "/about" },
                 { label: "Services", path: "/services" },
-                { label: "About Us", path: "/about" },
+                { label: "FAQ", path: "/faq" },
                 { label: "Contact", path: "/contact" },
               ].map((item) => (
                 <li key={item.label}>
                   <Link
                     to={item.path}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm inline-flex items-center gap-2 group"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    <span className="w-0 h-px bg-primary group-hover:w-3 transition-all duration-300" />
                     {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="font-semibold text-foreground mb-4">Services</h3>
+            <ul className="space-y-2">
+              {[
+                "Washing Machine Repair",
+                "Washing Machine Service",
+                "Front Load Repair",
+                "Top Load Repair",
+                "Fully Automatic Repair",
+              ].map((service) => (
+                <li key={service}>
+                  <Link
+                    to="/services"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {service}
                   </Link>
                 </li>
               ))}
@@ -57,42 +69,36 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-foreground mb-5">Contact</h3>
-            <ul className="space-y-4">
+            <h3 className="font-semibold text-foreground mb-4">Contact Us</h3>
+            <ul className="space-y-3">
               <li>
-                <a href="tel:+919876543210" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group">
-                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm">+91-9876543210</span>
+                <a href="tel:7710074028" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Phone className="w-4 h-4" />
+                  7710074028
                 </a>
               </li>
               <li>
-                <a href="mailto:help@applianceshelp.in" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group">
-                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <span className="text-sm">help@applianceshelp.in</span>
+                <a href="mailto:myblue@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Mail className="w-4 h-4" />
+                  myblue@gmail.com
                 </a>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <span className="text-sm">Mumbai, Delhi, Bangalore & 50+ cities across India</span>
               </li>
             </ul>
+            <div className="mt-4">
+              <a href="tel:7710074028">
+                <Button variant="default" size="sm" className="w-full gap-2">
+                  <Phone className="w-4 h-4" />
+                  Call Now
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-muted-foreground">
-            © {currentYear} AppliancesHelp. All rights reserved.
+        <div className="mt-8 pt-8 border-t border-border text-center">
+          <p className="text-sm text-muted-foreground">
+            © {currentYear} WashingExpert. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-muted-foreground">
-            <a href="#" className="hover:text-primary transition-colors">Privacy</a>
-            <a href="#" className="hover:text-primary transition-colors">Terms</a>
-          </div>
         </div>
       </div>
     </footer>
