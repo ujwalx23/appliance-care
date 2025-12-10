@@ -205,17 +205,47 @@ const Contact = () => {
                     </SelectContent>
                   </Select>
                 </div>
+<div className="space-y-2">
+  <Label htmlFor="issueType">
+    Issue Type <span className="text-destructive">*</span>
+  </Label>
 
-                <div className="space-y-2">
-                  <Label htmlFor="issue">Issue Description <span className="text-destructive">*</span></Label>
-                  <Textarea
-                    id="issue"
-                    name="issue"
-                    placeholder="Describe the issue with your washing machine..."
-                    required
-                    className="min-h-[120px] resize-none"
-                  />
-                </div>
+  <Select
+    value={issueType}
+    onValueChange={setIssueType}
+    required
+  >
+    <SelectTrigger className="h-12">
+      <SelectValue placeholder="Select issue type" />
+    </SelectTrigger>
+
+    <SelectContent>
+      <SelectItem value="Installation & Uninstallation">Installation & Uninstallation</SelectItem>
+      <SelectItem value="Removal">Removal</SelectItem>
+      <SelectItem value="Repair">Repair</SelectItem>
+      <SelectItem value="Service">Service</SelectItem>
+      <SelectItem value="Other">Other (Please mention)</SelectItem>
+    </SelectContent>
+  </Select>
+</div>
+
+{/* Show description box ONLY when "Other" is selected */}
+{issueType === "Other" && (
+  <div className="space-y-2">
+    <Label htmlFor="otherIssue">
+      Please specify issue <span className="text-destructive">*</span>
+    </Label>
+    <Textarea
+      id="otherIssue"
+      placeholder="Describe the issue..."
+      required
+      value={otherIssue}
+      onChange={(e) => setOtherIssue(e.target.value)}
+      className="min-h-[120px] resize-none"
+    />
+  </div>
+)}
+
 
                 <Button 
                   type="submit" 
