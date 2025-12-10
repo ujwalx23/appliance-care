@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MessageCircle, X, Send, Zap } from "lucide-react";
+import { MessageCircle, X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Message {
@@ -9,20 +9,20 @@ interface Message {
 }
 
 const quickReplies = [
-  "Washing Machine",
-  "AC Repair",
-  "Fridge Issue",
+  "Washing Machine Repair",
+  "AC Service",
+  "Fridge Repair",
   "Book Service",
   "Get Quote",
 ];
 
 const responses: Record<string, string> = {
-  "washing machine": "🧺 Washing Machine Issues:\n\n• Not spinning or draining\n• Leaking water\n• Unusual noises\n• Won't start\n\nCall +91-9876543210 for quick service!",
-  "ac": "❄️ AC Problems:\n\n• Not cooling\n• Strange noises\n• Gas leakage\n• Compressor issues\n\nBook a technician: +91-9876543210",
-  "fridge": "🧊 Refrigerator Fixes:\n\n• Not cooling properly\n• Ice buildup\n• Unusual sounds\n• Door seal issues\n\nCall us: +91-9876543210",
-  "book": "📅 Book a Service:\n\n1. Call: +91-9876543210\n2. Visit our Contact page\n3. Fill the online form\n\nSame-day service available!",
-  "quote": "💰 Free Quote:\n\nShare your appliance type, brand, and issue description.\n\nCall +91-9876543210 or use our contact form!",
-  "default": "👋 Hi! I can help with:\n\n• Washing Machines\n• Refrigerators\n• Air Conditioners\n• Microwaves\n• Dryers\n\nWhat needs fixing?",
+  "washing": "🧺 Washing Machine Repair:\n\n• Not spinning or draining\n• Leaking water\n• Unusual noises\n• Won't start\n\nCall 7710074028 for quick service!",
+  "ac": "❄️ AC Problems:\n\n• Not cooling\n• Strange noises\n• Water leakage\n\nCall 7710074028 for AC service!",
+  "fridge": "🧊 Refrigerator Repair:\n\n• Not cooling properly\n• Ice buildup\n• Unusual sounds\n\nCall 7710074028 now!",
+  "book": "📅 Book a Service:\n\n1. Call: 7710074028\n2. WhatsApp: 7710074028\n3. Visit Contact page\n\nSame-day service available!",
+  "quote": "💰 Get a Free Quote:\n\nWashing Machine Repair: ₹199\nWashing Machine Service: ₹249\nInstallation: ₹549\n\nCall 7710074028 for details!",
+  "default": "👋 Hello! I can help with:\n\n• Washing Machine Repair\n• AC Service\n• Fridge Repair\n• Microwave Repair\n\nHow can I assist you today?",
 };
 
 const Chatbot = () => {
@@ -59,10 +59,8 @@ const Chatbot = () => {
       {/* Chat Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 shadow-xl ${
-          isOpen
-            ? "bg-muted text-foreground rotate-0"
-            : "bg-gradient-to-br from-primary to-secondary text-primary-foreground animate-pulse-glow"
+        className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
+          isOpen ? "bg-muted text-foreground" : "bg-primary text-primary-foreground"
         }`}
         aria-label={isOpen ? "Close chat" : "Open chat"}
       >
@@ -71,27 +69,27 @@ const Chatbot = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-50 w-[calc(100vw-3rem)] max-w-[380px] glass-card rounded-3xl overflow-hidden animate-scale-in shadow-2xl">
+        <div className="fixed bottom-24 right-6 z-50 w-[calc(100vw-3rem)] max-w-[360px] bg-background rounded-2xl shadow-2xl border border-border overflow-hidden animate-scale-in">
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary to-secondary p-4 flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-sm">
-              <Zap className="w-5 h-5 text-white" />
+          <div className="bg-primary p-4 flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h3 className="font-semibold text-white">AppliancesHelp</h3>
-              <p className="text-xs text-white/80">Online • Ready to help</p>
+              <h3 className="font-semibold text-primary-foreground">WashingExpert</h3>
+              <p className="text-xs text-primary-foreground/80">Online • Ready to help</p>
             </div>
           </div>
 
           {/* Messages */}
-          <div className="h-72 overflow-y-auto p-4 space-y-3 bg-background/50">
+          <div className="h-64 overflow-y-auto p-4 space-y-3 bg-muted/30">
             {messages.map((msg) => (
               <div key={msg.id} className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}>
                 <div
                   className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm whitespace-pre-line ${
                     msg.isBot
-                      ? "bg-muted text-foreground rounded-bl-md"
-                      : "bg-gradient-to-r from-primary to-secondary text-white rounded-br-md"
+                      ? "bg-background text-foreground border border-border rounded-bl-md"
+                      : "bg-primary text-primary-foreground rounded-br-md"
                   }`}
                 >
                   {msg.text}
@@ -101,7 +99,7 @@ const Chatbot = () => {
           </div>
 
           {/* Quick Replies */}
-          <div className="px-4 pb-2 flex gap-2 overflow-x-auto bg-background/50">
+          <div className="px-4 pb-2 flex gap-2 overflow-x-auto bg-muted/30">
             {quickReplies.map((reply) => (
               <button
                 key={reply}
@@ -114,7 +112,7 @@ const Chatbot = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-border/50 bg-card/50">
+          <div className="p-4 border-t border-border bg-background">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -127,9 +125,9 @@ const Chatbot = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 px-4 py-2.5 rounded-xl bg-muted border-0 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className="flex-1 px-4 py-2.5 rounded-xl bg-muted border border-border text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
-              <Button type="submit" size="icon" variant="hero" className="rounded-xl shrink-0">
+              <Button type="submit" size="icon" variant="default" className="rounded-xl shrink-0">
                 <Send className="w-4 h-4" />
               </Button>
             </form>

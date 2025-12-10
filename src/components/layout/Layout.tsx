@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import Chatbot from "@/components/chatbot/Chatbot";
+import FloatingButtons from "@/components/FloatingButtons";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,10 +10,11 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      <main className="flex-grow">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
+      <FloatingButtons />
       <Chatbot />
     </div>
   );
