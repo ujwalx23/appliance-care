@@ -77,13 +77,8 @@ const HomeContactForm = () => {
               Fill out the form below and our team will get back to you within 24 hours
             </p>
           </div>
-<div className="grid md:grid-cols-2 gap-8 items-start">
-            {/* Contact Info */}
-      
-          
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="bg-background rounded-2xl border border-border p-6 space-y-4">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="bg-background rounded-2xl border border-border p-6 space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="home-name">Name <span className="text-destructive">*</span></Label>
@@ -203,9 +198,8 @@ const HomeContactForm = () => {
                     SEND MESSAGE
                   </>
                 )}
-              </Button>
-            </form>
-          </div>
+          </Button>
+        </form>
         </div>
       </div>
     </section>
