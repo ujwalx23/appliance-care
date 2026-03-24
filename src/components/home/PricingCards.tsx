@@ -115,7 +115,7 @@ const PricingCards = () => {
                 ))}
               </ul>
 
-              <a href="tel:7710074028" className="block">
+              <a href="tel:7977339435" className="block">
                 <Button 
                   variant={plan.popular ? "default" : "outline"} 
                   className="w-full gap-2"
