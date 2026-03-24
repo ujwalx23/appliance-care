@@ -72,20 +72,20 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Contact Us</h3>
             <ul className="space-y-3">
               <li>
-                <a href="tel:7710074028" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="tel:7977339435" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Phone className="w-4 h-4" />
-                  7710074028
+                 7977339435
                 </a>
               </li>
               <li>
-                <a href="mailto:rimshashaikh06@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:siemensservices.in@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  rimshashaikh06@gmail.com
+                  siemensservices.in@gmail.com
                 </a>
               </li>
             </ul>
             <div className="mt-4">
-              <a href="tel:7710074028">
+              <a href="tel:7977339435">
                 <Button variant="default" size="sm" className="w-full gap-2">
                   <Phone className="w-4 h-4" />
                   Call Now
