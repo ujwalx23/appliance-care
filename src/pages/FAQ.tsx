@@ -167,10 +167,10 @@ const FAQ = () => {
           <p className="text-muted-foreground mb-6">
             Call us and we'll be happy to help you!
           </p>
-          <a href="tel:7710074028">
+          <a href="tel:7977339435">
             <Button variant="default" size="lg" className="gap-2">
               <Phone className="w-5 h-5" />
-              Call 7710074028
+              Call 7977339435
             </Button>
           </a>
         </div>
