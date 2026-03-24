@@ -110,10 +110,10 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8">
-              <a href="tel:7710074028">
+              <a href="tel:7977339435">
                 <Button variant="default" size="lg" className="gap-2 px-8">
                   <Phone className="w-5 h-5" />
-                  Need urgent service? Call 7710074028
+                  Need urgent service? Call 7977339435
                 </Button>
               </a>
             </div>
