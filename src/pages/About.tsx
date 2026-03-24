@@ -126,10 +126,10 @@ const About = () => {
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Fast and reliable washing machine repair service. Expert technicians to fix all issues. Book now!
           </p>
-          <a href="tel:7710074028">
+          <a href="tel:7977339435">
             <Button variant="default" size="lg" className="gap-2">
               <Phone className="w-5 h-5" />
-              Book Now - 7710074028
+              Book Now - 7977339435
             </Button>
           </a>
         </div>
