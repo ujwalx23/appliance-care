@@ -100,8 +100,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Phone Number</h3>
-                    <a href="tel:7710074028" className="text-primary font-medium text-lg hover:underline">
-                      7710074028
+                    <a href="tel:7977339435" className="text-primary font-medium text-lg hover:underline">
+                     7977339435
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">
                       Call for immediate assistance
@@ -115,8 +115,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:rimshashaikh06@gmail.com" className="text-primary font-medium hover:underline">
-                      rimshashaikh06@gmail.com
+                    <a href="mailto:siemensservices.in@gmail.com" className="text-primary font-medium hover:underline">
+                   siemensservices.in@gmail.com
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">
                       We respond within 24 hours
@@ -142,7 +142,7 @@ const Contact = () => {
                 <a href="tel:7710074028">
                   <Button variant="default" size="lg" className="w-full gap-2">
                     <Phone className="w-5 h-5" />
-                    Call Now - 7710074028
+                    Call Now - 7977339435
                   </Button>
                 </a>
               </div>
@@ -285,10 +285,10 @@ const Contact = () => {
           <p className="text-primary-foreground/90 mb-6">
             Don't wait! Call us now for same-day washing machine repair service.
           </p>
-          <a href="tel:7710074028">
+          <a href="tel:7977339435">
             <Button variant="secondary" size="lg" className="gap-2">
               <Phone className="w-5 h-5" />
-              7710074028
+              7977339435
             </Button>
           </a>
         </div>
