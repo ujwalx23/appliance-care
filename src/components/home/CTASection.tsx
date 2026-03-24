@@ -11,14 +11,14 @@ const CTASection = () => {
         <p className="text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
           Fast and reliable washing machine repair service. Expert technicians to fix all issues. Book now!
         </p>
-        <a href="tel:7710074028">
+        <a href="tel:7977339435">
           <Button 
             variant="secondary" 
             size="lg" 
             className="gap-2 text-base px-8"
           >
             <Phone className="w-5 h-5" />
-            Book Now - 7710074028
+            Book Now - 7977339435
           </Button>
         </a>
       </div>
