@@ -78,7 +78,7 @@ const Services = () => {
             <a href="tel:7710074028">
               <Button variant="default" size="lg" className="gap-2">
                 <Phone className="w-5 h-5" />
-                Book a Service: 7710074028
+                Book a Service: 7977339435
               </Button>
             </a>
           </div>
@@ -110,7 +110,7 @@ const Services = () => {
                   <span className="text-muted-foreground line-through">₹{service.oldPrice}</span>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
-                <a href="tel:7710074028">
+                <a href="tel:7977339435">
                   <Button variant="outline" size="sm" className="w-full gap-2">
                     <Phone className="w-4 h-4" />
                     Book Now
@@ -168,10 +168,10 @@ const Services = () => {
           <p className="text-primary-foreground/90 mb-6">
             Our technicians are available 24×7. Get same-day service!
           </p>
-          <a href="tel:7710074028">
+          <a href="tel:7977339435">
             <Button variant="secondary" size="lg" className="gap-2">
               <Phone className="w-5 h-5" />
-              Call Now: 7710074028
+              Call Now: 7977339435
             </Button>
           </a>
         </div>
