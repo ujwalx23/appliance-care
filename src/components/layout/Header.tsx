@@ -46,19 +46,19 @@ const Header = () => {
           </nav>
 
           {/* Phone Number - Desktop */}
-          <a href="tel:7710074028" className="hidden lg:flex">
+          <a href="tel:7977339435" className="hidden lg:flex">
             <Button variant="default" size="default" className="gap-2">
               <Phone className="w-4 h-4" />
-              7710074028
+             7977339435
             </Button>
           </a>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-3 lg:hidden">
-            <a href="tel:7710074028">
+            <a href="tel:7977339435">
               <Button variant="default" size="sm" className="gap-2">
                 <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">7710074028</span>
+                <span className="hidden sm:inline">7977339435/span>
               </Button>
             </a>
             <button
