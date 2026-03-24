@@ -1,8 +1,8 @@
 import { Phone } from "lucide-react";
 
 const FloatingButtons = () => {
-  const whatsappNumber = "917710074028";
-  const phoneNumber = "7710074028";
+  const whatsappNumber = "917977339435";
+  const phoneNumber = "7977339435";
 
   return (
     <div className="fixed left-4 bottom-4 z-40 flex flex-col gap-4">
