@@ -11,11 +11,11 @@ import {
 const faqs = [
   {
     question: "What areas do you serve?",
-    answer: "We provide washing machine repair services across major cities. Call us at 7710074028 to check if we serve your area.",
+    answer: "We provide washing machine repair services across major cities. Call us at 7977339435 to check if we serve your area.",
   },
   {
     question: "How quickly can you come for repair?",
-    answer: "We offer same-day service in most areas. Our average response time is 30 minutes. For urgent repairs, call us directly at 7710074028.",
+    answer: "We offer same-day service in most areas. Our average response time is 30 minutes. For urgent repairs, call us directly at 7977339435.",
   },
   {
     question: "What brands do you repair?",

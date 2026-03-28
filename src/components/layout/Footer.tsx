@@ -78,9 +78,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="mailto:siemensservices.in@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                <a href="mailto:siemenshelp.in@gmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                   <Mail className="w-4 h-4" />
-                  siemensservices.in@gmail.com
+                  siemenshelp.in@gmail.com
                 </a>
               </li>
             </ul>
