@@ -17,11 +17,11 @@ const quickReplies = [
 ];
 
 const responses: Record<string, string> = {
-  "washing": "🧺 Washing Machine Repair:\n\n• Not spinning or draining\n• Leaking water\n• Unusual noises\n• Won't start\n\nCall 7710074028 for quick service!",
-  "ac": "❄️ AC Problems:\n\n• Not cooling\n• Strange noises\n• Water leakage\n\nCall 7710074028 for AC service!",
-  "fridge": "🧊 Refrigerator Repair:\n\n• Not cooling properly\n• Ice buildup\n• Unusual sounds\n\nCall 7710074028 now!",
-  "book": "📅 Book a Service:\n\n1. Call: 7710074028\n2. WhatsApp: 7710074028\n3. Visit Contact page\n\nSame-day service available!",
-  "quote": "💰 Get a Free Quote:\n\nWashing Machine Repair: ₹199\nWashing Machine Service: ₹249\nInstallation: ₹549\n\nCall 7710074028 for details!",
+  "washing": "🧺 Washing Machine Repair:\n\n• Not spinning or draining\n• Leaking water\n• Unusual noises\n• Won't start\n\nCall 7977339435 for quick service!",
+  "ac": "❄️ AC Problems:\n\n• Not cooling\n• Strange noises\n• Water leakage\n\nCall 7977339435 for AC service!",
+  "fridge": "🧊 Refrigerator Repair:\n\n• Not cooling properly\n• Ice buildup\n• Unusual sounds\n\nCall 7977339435 now!",
+  "book": "📅 Book a Service:\n\n1. Call: 7977339435\n2. WhatsApp: 7977339435\n3. Visit Contact page\n\nSame-day service available!",
+  "quote": "💰 Get a Free Quote:\n\nWashing Machine Repair: ₹199\nWashing Machine Service: ₹249\nInstallation: ₹549\n\nCall 7977339435 for details!",
   "default": "👋 Hello! I can help with:\n\n• Washing Machine Repair\n• AC Service\n• Fridge Repair\n• Microwave Repair\n\nHow can I assist you today?",
 };
 

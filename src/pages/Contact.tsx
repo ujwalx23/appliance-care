@@ -115,8 +115,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                    <a href="mailto:siemensservices.in@gmail.com" className="text-primary font-medium hover:underline">
-                   siemensservices.in@gmail.com
+                    <a href="mailto:siemenshelp.in@gmail.com" className="text-primary font-medium hover:underline">
+                   siemenshelp.in@gmail.com
                     </a>
                     <p className="text-sm text-muted-foreground mt-1">
                       We respond within 24 hours
@@ -139,7 +139,7 @@ const Contact = () => {
               </div>
 
               <div className="mt-8">
-                <a href="tel:7710074028">
+                <a href="tel:7977339435">
                   <Button variant="default" size="lg" className="w-full gap-2">
                     <Phone className="w-5 h-5" />
                     Call Now - 7977339435

@@ -58,7 +58,7 @@ const Header = () => {
             <a href="tel:7977339435">
               <Button variant="default" size="sm" className="gap-2">
                 <Phone className="w-4 h-4" />
-                <span className="hidden sm:inline">7977339435/span>
+                <span className="hidden sm:inline">7977339435</span>
               </Button>
             </a>
             <button
